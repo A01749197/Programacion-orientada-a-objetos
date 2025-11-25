@@ -1,6 +1,4 @@
 #include "Flight.h"
-#include <iostream>
-using namespace std;
 
 Flight::Flight()
 {
@@ -11,14 +9,14 @@ void Flight::setdate(string date)
     this->date = date;
 }
 
-void Flight::setseat(int row, int col, Passenger p)
-{
-    seats[row][col] = p;
-}
-
 string Flight::getdate()
 {
     return date;
+}
+
+void Flight::setseat(int row, int col, Passenger p)
+{
+    seats[row][col] = p;
 }
 
 bool Flight::assignSeat(int row, int col, Passenger p)
@@ -33,6 +31,7 @@ bool Flight::assignSeat(int row, int col, Passenger p)
     seats[row][col] = p;
     return true;
 }
+
 void Flight::showSeats()
 {
     cout << "\nMapa de asientos (O = ocupado, L = libre):\n";
@@ -50,53 +49,57 @@ void Flight::showSeats()
         cout << endl;
     }
 }
-void Flight::setcrew(string crew)
-{
-    this->crew = crew;
+
+void Flight::setcrew(string crew) 
+{ 
+    this->crew = crew; 
 }
-string Flight::getcrew()
-{
-    return crew;
-}
-void Flight::setfromto(string fromTo)
-{
-    this->fromTo = fromTo;
-}
-string Flight::getfromto()
-{
-    return fromTo;
-}
-void Flight::setdistance(float distance)
-{
-    this->distance = distance;
-}
-float Flight::getdistance()
-{
-    return distance;
-}
-void Flight::setprice(float price)
-{
-    this->price = price;
-}
-float Flight::getprice()
-{
-    return price;
-}
-void Flight::setairplanemodel(string airplanemodel)
-{
-    this->airplanemodel = airplanemodel;
-}
-string Flight::getairplanemodel()
-{
-    return airplanemodel;
-}
-string Flight::gethour()
-{
-    return hour;
-}
-void Flight::sethour(string hour)
-{
-    this->hour = hour;
+string Flight::getcrew() 
+{ 
+    return crew; 
 }
 
+void Flight::setfromto(string fromTo) 
+{ 
+    this->fromTo = fromTo; 
+}
+string Flight::getfromto() 
+{ 
+    return fromTo; 
+}
 
+void Flight::setdistance(float distance) 
+{ 
+    this->distance = distance; 
+}
+float Flight::getdistance() 
+{ 
+    return distance; 
+}
+
+void Flight::setprice(float price) 
+{ 
+    this->price = price; 
+}
+float Flight::getprice() 
+{ 
+    return price; 
+}
+
+void Flight::setairplanemodel(string airplanemodel) 
+{ 
+    this->airplanemodel = airplanemodel; 
+}
+string Flight::getairplanemodel() 
+{ 
+    return airplanemodel; 
+}
+
+void Flight::sethour(string hour) 
+{ 
+    this->hour = hour; 
+}
+string Flight::gethour() 
+{ 
+    return hour; 
+}
