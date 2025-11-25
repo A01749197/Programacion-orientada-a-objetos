@@ -21,6 +21,7 @@ private:
     float price;
     string airplanemodel;
     string hour;
+    float fuel; // Nuevo atributo requerido
 
 public:
     Flight();
@@ -49,6 +50,9 @@ public:
     
     void sethour(string hour);
     string gethour();
+
+    void calculateFuel();
+    float getfuel();
 };
 
 #endif
