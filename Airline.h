@@ -7,15 +7,16 @@
 
 using namespace std;
 
-constexpr int MAXFLIGHT = 10;
+constexpr int NUM_FLIGHTS = 5;
 
 class Airline
 {
 private:
-    Flight flight[MAXFLIGHT];
+    Flight flights[NUM_FLIGHTS];
     string boardingcity;
     double income;
     string shortname;
+
     bool Agendado; 
 
 public:
@@ -25,7 +26,7 @@ public:
     string getboardingcity();
     
     void setflight(int index, Flight f);
-    Flight* getflight();
+    Flight* getflight(); 
     
     void setincomes(double income);
     double getincomes();
