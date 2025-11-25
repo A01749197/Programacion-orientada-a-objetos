@@ -7,8 +7,8 @@
 
 using namespace std;
 
-const int ROWS = 30;
-const int COLS = 4;
+constexpr int ROWS = 30;
+constexpr int COLS = 4;
 
 class Flight
 {
@@ -25,29 +25,29 @@ private:
 public:
     Flight();
 
-    void setdate(string date);
+    void setdate(string d);
     string getdate();
     
     void setseat(int row, int col, Passenger p);
     bool assignSeat(int row, int col, Passenger p);
     void showSeats();
 
-    void setcrew(string crew);
+    void setcrew(string c);
     string getcrew();
     
-    void setfromto(string fromTo);
+    void setfromto(string ft);
     string getfromto();
     
-    void setdistance(float distance);
+    void setdistance(float d);
     float getdistance();
     
-    void setprice(float price);
+    void setprice(float p);
     float getprice();
     
-    void setairplanemodel(string airplanemodel);
+    void setairplanemodel(string am);
     string getairplanemodel();
     
-    void sethour(string hour);
+    void sethour(string h);
     string gethour();
 };
 
