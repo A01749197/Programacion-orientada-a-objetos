@@ -1,4 +1,6 @@
-#pragma once
+#ifndef AIRLINE_H
+#define AIRLINE_H
+
 #include <iostream>
 #include <string>
 #include "Flight.h"
@@ -18,17 +20,23 @@ private:
 
 public:
     Airline();
+    
     void setboardingcity(string boardingcity);
     string getboardingcity();
+    
     void setflight(int index, Flight f);
     Flight* getflight();
+    
     void setincomes(double income);
     double getincomes();
+    
     void setshortname(string shortname);
     string getshortname();
+    
     void updateairline();
     void scheduleflight();
     double currentincome();
     void closeoperation();
 };
 
+#endif
