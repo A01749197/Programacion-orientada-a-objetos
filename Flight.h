@@ -25,29 +25,29 @@ private:
 public:
     Flight();
 
-    void setdate(string d);
+    void setdate(string date);
     string getdate();
     
     void setseat(int row, int col, Passenger p);
     bool assignSeat(int row, int col, Passenger p);
     void showSeats();
 
-    void setcrew(string c);
+    void setcrew(string crew);
     string getcrew();
     
-    void setfromto(string ft);
+    void setfromto(string fromTo);
     string getfromto();
     
-    void setdistance(float d);
+    void setdistance(float distance);
     float getdistance();
     
-    void setprice(float p);
+    void setprice(float price);
     float getprice();
     
-    void setairplanemodel(string am);
+    void setairplanemodel(string airplanemodel);
     string getairplanemodel();
     
-    void sethour(string h);
+    void sethour(string hour);
     string gethour();
 };
 
