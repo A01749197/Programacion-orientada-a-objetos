@@ -3,12 +3,12 @@
 Passenger::Passenger() {
 }
 
-void Passenger::setname(string nName) {
-    name = nName;
+void Passenger::setname(string n) {
+    name = n;
 }
 
-void Passenger::setphone(string nPhone) {
-    phone = nPhone;
+void Passenger::setphone(string p) {
+    phone = p;
 }
 
 string Passenger::getname() {
