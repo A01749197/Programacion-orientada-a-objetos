@@ -5,12 +5,12 @@
 #include "Airline.h"
 using namespace std;
 
-constexpr int MAXAIRLINE = 3;
+constexpr int NUM_AIRLINES = 3;
 
 class Airport
 {
 private:
-	Airline airlines[MAXAIRLINE];
+	Airline airlines[NUM_AIRLINES];
 	string name;
 	string currentdate;
 	string city;
@@ -21,28 +21,28 @@ private:
 public:
 	Airport();
 	
-    void setairlines(int index, Airline a);
+	void setairlines(int index, Airline a);
 	Airline* getairlines();
 	
-    void setname(string name);
+	void setname(string name);
 	string getname();
 	
-    void setcurrentdate(string currentdate);
+	void setcurrentdate(string currentdate);
 	string getcurrentdate();
 	
-    void setcity(string city);
+	void setcity(string city);
 	string getcity();
 	
-    void setcountry(string country);
+	void setcountry(string country);
 	string getcountry();
 	
-    void settotaltransactions(int totaltransactions);
+	void settotaltransactions(int totaltransactions);
 	int gettotaltransactions();
 	
-    void settotaldailyincome(double totaldailyincome);
+	void settotaldailyincome(double totaldailyincome);
 	double gettotaldailyincome();
 	
-    void startoperations(string currentdate);
+	void startoperations(string currentdate);
 	void closeoperations();
 	void printallflights();
 };
