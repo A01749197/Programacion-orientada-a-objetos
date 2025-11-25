@@ -14,8 +14,8 @@ private:
 public:
     Passenger();
 
-    void setname(string name);
-    void setphone(string phone);
+    void setname(string n);
+    void setphone(string p);
 
     string getname();
     string getphone();
