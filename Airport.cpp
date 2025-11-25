@@ -1,96 +1,98 @@
 #include "Airport.h"
-#include <iostream>
-using namespace std;
+
 Airport::Airport()
 {
-	cout << "Ingrese la fecha actual (DD/MM/AAAA): ";
-	cin >> this->currentdate;
-	for (int i = 0; i < MAXAIRLINE; i++) 
-	{
-		airlines[i] = Airline();   
-	}
-	for (int i = 0; i < MAXFLIGHT; i++) 
-	{
-		allFlights[i] = Flight();  
-	}
-	startoperations(currentdate);
+    totaltransactions = 0;
+    totaldailyincome = 0;
 }
+
 void Airport::setairlines(int index, Airline a)
 {
 	this->airlines[index] = a;
 }
+
 Airline* Airport::getairlines()
 {
 	return airlines;
 }
-void Airport::setname(string name)
-{
-	this->name = name;
+
+void Airport::setname(string name) 
+{ 
+    this->name = name; 
 }
-string Airport::getname()
-{
-	return name;
+string Airport::getname() 
+{ 
+    return name; 
 }
-void Airport::setcurrentdate(string currentdate)
-{
-	this->currentdate = currentdate;
+
+void Airport::setcurrentdate(string currentdate) 
+{ 
+    this->currentdate = currentdate; 
 }
-string Airport::getcurrentdate()
-{
-	return currentdate;
+string Airport::getcurrentdate() 
+{ 
+    return currentdate; 
 }
-void Airport::setcity(string city)
-{
-	this->city = city;
+
+void Airport::setcity(string city) 
+{ 
+    this->city = city; 
 }
-string Airport::getcity()
-{
-	return city;
+string Airport::getcity() 
+{ 
+    return city; 
 }
-void Airport::setcountry(string country)
-{
-	this->country = country;
+
+void Airport::setcountry(string country) 
+{ 
+    this->country = country; 
 }
-string Airport::getcountry()
-{
-	return country;
+string Airport::getcountry() 
+{ 
+    return country; 
 }
-void Airport::settotaltransactions(int totaltransactions)
-{
-	this->totaltransactions = totaltransactions;
+
+void Airport::settotaltransactions(int totaltransactions) 
+{ 
+    this->totaltransactions = totaltransactions; 
 }
-int Airport::gettotaltransactions()
-{
-	return totaltransactions;
+int Airport::gettotaltransactions() 
+{ 
+    return totaltransactions; 
 }
-void Airport::settotaldailyincome(double totaldailyincome)
-{
-	this->totaldailyincome = totaldailyincome;
+
+void Airport::settotaldailyincome(double totaldailyincome) 
+{ 
+    this->totaldailyincome = totaldailyincome; 
 }
-double Airport::gettotaldailyincome()
-{
-	return totaldailyincome;
+double Airport::gettotaldailyincome() 
+{ 
+    return totaldailyincome; 
 }
+
 void Airport::startoperations(string currentdate)
 {
-	cout << "Codigo identificador del aeropuerto: " << endl;
-	cin >> this->name;
-	cout << "Ciudad del aeropuerto: " << endl;
-	cin >> this->city;
-	cout << "Pais del aeropuerto: " << endl;
-	cin >> this->country;
+    // Solo asignamos la fecha y propagamos la ciudad a las aerolineas
+    // Se asume que el profesor uso setcity() antes de llamar esto
+    this->currentdate = currentdate;
 
 	for (int i = 0; i < MAXAIRLINE; i++)
 	{
 		airlines[i].setboardingcity(this->city);
-		for (int j = 0; j < MAXFLIGHT; j++)
+		
+        Flight* vuelos = airlines[i].getflight();
+        for (int j = 0; j < MAXFLIGHT; j++)
 		{
-			airlines[i].getflight()[j].setdate(currentdate);
+			vuelos[j].setdate(currentdate);
 		}
 	}
 }
+
 void Airport::closeoperations()
 {
+    totaltransactions = 0;
+    totaldailyincome = 0;
+
 	for (int i = 0; i < MAXAIRLINE; i++)
 	{
 		if (airlines[i].getincomes() > 0)
@@ -100,20 +102,22 @@ void Airport::closeoperations()
 		}
 	}
 
-	cout << "Cerrando operaciones\n" << endl;
-	cout << "Total de transacciones del dia: " << totaltransactions << endl;
-	cout << "Ingreso total del dia: $" << totaldailyincome << endl;
+	cout << "\nCerrando operaciones" << endl;
+	cout << "Total de transacciones: " << totaltransactions << endl;
+	cout << "Ingreso total: $" << totaldailyincome << endl;
 }
 
 void Airport::printallflights()
 {
-	cout << "\nLos vuelos programados para el día " << this->currentdate << " son:\n\n";
+	cout << "\nVuelos programados para el dia " << this->currentdate << ":\n\n";
 
 	for (int i = 0; i < MAXAIRLINE; i++)
 	{
 		Airline& A = airlines[i];
-		cout << "Aerolínea: " << A.getshortname()
-			<< "  (Ciudad base: " << A.getboardingcity() << ")\n";
+        
+        if(A.getshortname() == "") continue;
+
+		cout << "Aerolinea: " << A.getshortname() << "\n";
 
 		Flight* vuelos = A.getflight();
 
@@ -128,7 +132,6 @@ void Airport::printallflights()
 				<< "  Modelo: " << vuelos[j].getairplanemodel()
 				<< "\n";
 		}
-
-		cout << "---------------------------------------\n";
+		cout << endl; 
 	}
 }
