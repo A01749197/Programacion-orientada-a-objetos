@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PASSENGER_H
+#define PASSENGER_H
 
 #include <iostream>
 #include <string>
@@ -19,3 +20,5 @@ public:
     string getname();
     string getphone();
 };
+
+#endif
