@@ -2,6 +2,7 @@
 
 Airport::Airport()
 {
+
     totaltransactions = 0;
     totaldailyincome = 0;
 }
@@ -72,17 +73,21 @@ double Airport::gettotaldailyincome()
 
 void Airport::startoperations(string currentdate)
 {
-    // Solo asignamos la fecha y propagamos la ciudad a las aerolineas
-    // Se asume que el profesor uso setcity() antes de llamar esto
     this->currentdate = currentdate;
 
-	for (int i = 0; i < MAXAIRLINE; i++)
+	cout << "Identificador del aeropuerto: ";
+	cin >> this->name;
+	cout << "Ciudad de operacion: ";
+	cin >> this->city;
+	cout << "Pais: ";
+	cin >> this->country;
+
+	for (int i = 0; i < NUM_AIRLINES; i++)
 	{
 		airlines[i].setboardingcity(this->city);
 		
         Flight* vuelos = airlines[i].getflight();
-        for (int j = 0; j < MAXFLIGHT; j++)
-		{
+        for (int j = 0; j < NUM_FLIGHTS; j++) 
 			vuelos[j].setdate(currentdate);
 		}
 	}
@@ -90,16 +95,27 @@ void Airport::startoperations(string currentdate)
 
 void Airport::closeoperations()
 {
+
+    
     totaltransactions = 0;
     totaldailyincome = 0;
 
-	for (int i = 0; i < MAXAIRLINE; i++)
+	for (int i = 0; i < NUM_AIRLINES; i++)
 	{
-		if (airlines[i].getincomes() > 0)
-		{
-			totaltransactions++;
-			totaldailyincome += airlines[i].getincomes();
-		}
+        // Sumamos el ingreso de cada aerolinea al total del dia
+        if (airlines[i].getincomes() > 0)
+        {
+            totaldailyincome += airlines[i].getincomes();
+        }
+
+        Flight* f = airlines[i].getflight();
+        for(int j = 0; j < NUM_FLIGHTS; j++)
+        {
+            if(f[j].getairplanemodel() != "")
+            {
+                totaltransactions++;
+            }
+        }
 	}
 
 	cout << "\nCerrando operaciones" << endl;
@@ -109,9 +125,9 @@ void Airport::closeoperations()
 
 void Airport::printallflights()
 {
-	cout << "\nVuelos programados para el dia " << this->currentdate << ":\n\n";
+	cout << "Los vuelos programados para " << this->currentdate << " son :\n\n";
 
-	for (int i = 0; i < MAXAIRLINE; i++)
+	for (int i = 0; i < NUM_AIRLINES; i++)
 	{
 		Airline& A = airlines[i];
         
@@ -121,9 +137,9 @@ void Airport::printallflights()
 
 		Flight* vuelos = A.getflight();
 
-		for (int j = 0; j < MAXFLIGHT; j++)
+		for (int j = 0; j < NUM_FLIGHTS; j++)
 		{
-			if (vuelos[j].getdate() == "")
+			if (vuelos[j].getdate() == "" || vuelos[j].getairplanemodel() == "")
 				continue;
 
 			cout << "   Vuelo " << j
